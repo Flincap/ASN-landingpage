@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import mark from '../assets/asn-mark.png'
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
         <div className="foot-top">
           <div>
             <div className="foot-brand">
-              <img src="/asn-mark.png" alt="" width={180} height={165} />
+              <img src={mark} alt="" width={180} height={165} />
               <span>
                 Africa
                 <br />

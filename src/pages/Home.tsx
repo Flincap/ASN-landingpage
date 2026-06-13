@@ -4,7 +4,38 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useReveal, CountUp, Arrow } from '../components/ui'
 
+/* Gallery photos are bundled by Vite so they can never 404 on deploy. */
+const GALLERY_URLS = import.meta.glob<string>('../assets/gallery/*.webp', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+const galleryUrl = (kind: string, n: number) =>
+  GALLERY_URLS[`../assets/gallery/${kind}-${String(n).padStart(2, '0')}-640.webp`]
+
 const VIDEO_ID = 'x8DxbBTnbgs'
+
+const SWAP_WORDS = ['Africa.', 'Nigeria.', 'Lagos.', 'everyone.']
+
+/** Rotating hero word: Africa → Nigeria → Lagos → everyone. */
+function SwapWord() {
+  const [i, setI] = useState(0)
+  const [out, setOut] = useState(false)
+
+  useEffect(() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const cycle = setInterval(() => {
+      setOut(true)
+      setTimeout(() => {
+        setI((v) => (v + 1) % SWAP_WORDS.length)
+        setOut(false)
+      }, 360)
+    }, 3200)
+    return () => clearInterval(cycle)
+  }, [])
+
+  return <span className={`hl-swap${out ? ' out' : ''}`}>{SWAP_WORDS[i]}</span>
+}
 
 const TICKER = [
   ['LAGOS', 'ACCRA'],
@@ -80,7 +111,7 @@ const GALLERY_ROWS = [
 
 function GalleryRow({ kind, alts, reverse }: (typeof GALLERY_ROWS)[number]) {
   const imgs = alts.map((alt, i) => ({
-    src: `/gallery/${kind}-${String(i + 1).padStart(2, '0')}-640.webp`,
+    src: galleryUrl(kind, i + 1),
     alt,
   }))
   // rendered twice for a continuous loop
@@ -118,11 +149,10 @@ export default function Home() {
       {/* HERO */}
       <section className="hero" id="top">
         <div className="wrap">
-          <span className="eyebrow">Not-for-profit · Non-membership · Lagos, Nigeria</span>
           <h1 className="h-display">
             <span className="line"><span>Stablecoins are an</span></span>
             <span className="line"><span><em className="hl" style={{ fontStyle: 'normal' }}>economic lifeline</em></span></span>
-            <span className="line"><span>for Africa.</span></span>
+            <span className="line"><span>for <SwapWord /></span></span>
           </h1>
           <p className="lede">
             The Africa Stablecoin Network works with regulators, builders and researchers on the

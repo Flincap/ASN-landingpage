@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../assets/asn-logo.png'
 
 export default function Header({ solid = false }: { solid?: boolean }) {
   const [scrolled, setScrolled] = useState(solid)
@@ -24,7 +25,7 @@ export default function Header({ solid = false }: { solid?: boolean }) {
     <header className={scrolled || open ? 'scrolled' : ''}>
       <div className="wrap nav">
         <Link to="/" className="brand" aria-label="Africa Stablecoin Network home" onClick={close}>
-          <img src="/asn-logo.png" alt="Africa Stablecoin Network" width={480} height={156} />
+          <img src={logo} alt="Africa Stablecoin Network" width={480} height={156} />
         </Link>
         <nav className={`nav-links${open ? ' open' : ''}`}>
           <Link to="/#about" onClick={close}>About</Link>

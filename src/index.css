@@ -20,8 +20,8 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--gold);color:var(--ink)}
 
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-@media(min-width:720px){.wrap{padding:0 48px}}
+.wrap{max-width:1360px;margin:0 auto;padding:0 20px}
+@media(min-width:720px){.wrap{padding:0 56px}}
 .section{padding:72px 0}
 @media(min-width:720px){.section{padding:120px 0}}
 
@@ -63,14 +63,16 @@ header.scrolled{background:rgba(250,250,246,.92);backdrop-filter:blur(12px);box-
 /* ---------- hero ---------- */
 .hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;padding-top:104px;position:relative}
 .hero .eyebrow{margin-bottom:22px}
-.hero h1{font-size:clamp(2.1rem,6.4vw,4.6rem);max-width:17ch}
+.hero h1{font-size:clamp(2.2rem,6.6vw,5.4rem);max-width:17ch}
 .hero h1 .line{display:block;overflow:hidden}
 .hero h1 .line>span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
 .hero h1 .line:nth-child(2)>span{animation-delay:.1s}
 .hero h1 .line:nth-child(3)>span{animation-delay:.2s}
 @keyframes rise{to{transform:none}}
 .hl{color:var(--green)}
-.hero .lede{margin-top:26px;font-size:clamp(1rem,1.5vw,1.22rem);max-width:54ch;color:var(--muted);opacity:0;animation:fade .9s .45s forwards}
+.hl-swap{display:inline-block;min-width:6.8ch;text-align:left;color:var(--indigo);transition:opacity .35s ease,transform .35s ease}
+.hl-swap.out{opacity:0;transform:translateY(10px)}
+.hero .lede{margin-top:28px;font-size:clamp(1.02rem,1.55vw,1.3rem);max-width:58ch;color:var(--muted);opacity:0;animation:fade .9s .45s forwards}
 .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;opacity:0;animation:fade .9s .6s forwards}
 @keyframes fade{to{opacity:1}}
 .hero-meta{margin-top:56px;padding-bottom:48px;display:flex;gap:28px 56px;flex-wrap:wrap;opacity:0;animation:fade .9s .75s forwards}
