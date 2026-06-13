@@ -1,102 +1,64 @@
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
-import Logo from "./Logo";
+import { Link } from 'react-router-dom'
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   return (
-    <footer id="contact" className="bg-blue-950 text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+    <footer>
+      <div className="wrap">
+        <div className="foot-top">
           <div>
-            <Logo className="h-12 mb-6" />
-            <p className="text-blue-200 mb-6">
-              The Africa Stablecoin Network is dedicated to fostering
-              collaboration, innovation, and growth of stablecoin ecosystems
-              across Africa.
+            <div className="foot-brand">
+              <img src="/asn-mark.png" alt="" width={180} height={165} />
+              <span>
+                Africa
+                <br />
+                Stablecoin
+                <br />
+                Network
+              </span>
+            </div>
+            <p className="foot-mission">
+              Advancing the appropriate adoption, use and regulation of stablecoins in Africa,
+              beginning with Nigeria.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/afristablecoin"
-                className="text-blue-300 hover:text-white transition-colors"
-              >
-                <Facebook size={20} />
+          </div>
+          <div className="foot-contact">
+            <a className="mail" href="mailto:hi@afristablecoin.org">
+              hi@afristablecoin.org
+            </a>
+            <address>
+              Plot 15, Orchid Road,
+              <br />
+              Lekki, Lagos, Nigeria
+            </address>
+            <div className="socials">
+              <a href="https://x.com/afristablecoin" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.2 22H3l7.3-8.3L1.5 2h6.4l4.4 5.9L18.9 2Zm-1.1 18h1.7L7 3.9H5.2L17.8 20Z" />
+                </svg>
               </a>
-              <a
-                href="https://www.x.com/afristablecoin"
-                className="text-blue-300 hover:text-white transition-colors"
-              >
-                <Twitter size={20} />
+              <a href="https://www.linkedin.com/company/afristablecoin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.2 8.3h4.6V24H.2V8.3Zm7.6 0h4.4v2.1h.1c.6-1.2 2.1-2.4 4.4-2.4 4.7 0 5.6 3.1 5.6 7.1V24h-4.6v-7.8c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.1V24H7.8V8.3Z" />
+                </svg>
               </a>
-              <a
-                href="https://www.linkedin.com/company/afristablecoin"
-                className="text-blue-300 hover:text-white transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://www.instagram.com/afristablecoin"
-                className="text-blue-300 hover:text-white transition-colors"
-              >
-                <Instagram size={20} />
+              <a href="https://www.instagram.com/afristablecoin" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                </svg>
               </a>
             </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Mail className="text-green-500 h-5 w-5 mt-1 mr-3" />
-                <a href="mailto:hi@afristablecoin.org" className="text-blue-200 hover:text-white transition-colors">
-                  hi@afristablecoin.org
-                </a>
-              </li>
-              <li className="flex items-start">
-                <Phone className="text-green-500 h-5 w-5 mt-1 mr-3" />
-                <span className="text-blue-200">+234 702 599 4794</span>
-              </li>
-              <li className="flex items-start">
-                <MapPin className="text-green-500 h-5 w-5 mt-1 mr-3" />
-                <span className="text-blue-200">Lagos, Nigeria</span>
-              </li>
-            </ul>
           </div>
         </div>
-
-        <div className="pt-8 border-t border-blue-900">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-blue-300 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} Africa Stablecoin Network. All rights
-              reserved.
-            </p>
-            <div className="flex space-x-6">
-              <a
-                href="https://docs.google.com/document/d/1qs7EfUD60gPidhkqroNjEE3lPkBxpXRN_iRY11Vur5o/edit?usp=sharing"
-                className="text-blue-300 hover:text-white text-sm transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="https://docs.google.com/document/d/1qs7EfUD60gPidhkqroNjEE3lPkBxpXRN_iRY11Vur5o/edit?usp=sharing"
-                className="text-blue-300 hover:text-white text-sm transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
-          </div>
+        <div className="foot-bottom">
+          <span>© {new Date().getFullYear()} Africa Stablecoin Network</span>
+          <nav>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
+          </nav>
         </div>
       </div>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}

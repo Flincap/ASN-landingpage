@@ -1,50 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import AboutSection from "./components/AboutSection";
-import WhyJoinSection from "./components/WhyJoinSection";
-import WhyStablecoinsSection from "./components/WhyStablecoinsSection";
-import ConferenceSection from "./components/ConferenceSection";
-import Gallery from "./components/Gallery";
-import CallToAction from "./components/CallToAction";
-import Footer from "./components/Footer";
-import { useState } from "react";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import PrivacyPopup from "./components/PrivacyPopup";
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
+import WhatWeDo from './pages/WhatWeDo'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 
-function App() {
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
-
-  return (
-    <Router>
-      <div className="min-h-screen bg-neutral-50 font-sans text-neutral-900">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Hero />
-                  <AboutSection />
-                  <WhyJoinSection />
-                  <WhyStablecoinsSection />
-                  <ConferenceSection />
-                  <Gallery />
-                  <CallToAction />
-                </>
-              }
-            />
-          </Routes>
-        </main>
-        {showPrivacyPolicy && (
-          <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} />
-        )}
-        <Footer />
-        <PrivacyPopup onShowPrivacy={() => setShowPrivacyPolicy(true)} />
-      </div>
-    </Router>
-  );
+/** Scrolls to top on route change, or to the #anchor if one is present. */
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (hash) {
+      // wait a frame so the target section exists after navigation
+      requestAnimationFrame(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+      })
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, hash])
+  return null
 }
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <ScrollManager />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/what-we-do" element={<WhatWeDo />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </>
+  )
+}
