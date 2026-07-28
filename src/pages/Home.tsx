@@ -61,8 +61,9 @@ const EVENTS = [
   {
     tag: 'Flagship',
     date: 'July 30, 2026',
+    time: '8:00 AM WAT',
     title: 'Nigeria Stablecoin Summit 2.0',
-    venue: 'Lagos Oriental Hotel, Lagos',
+    venue: 'Lagos Oriental Hotel, Victoria Island, Lagos',
     text: "The second edition of Nigeria's gathering on payments and banking innovation — policymakers, banks and fintech leaders in one room.",
     href: 'https://www.nigeriastablecoinsummit.com/',
     cta: 'Register',
@@ -70,9 +71,10 @@ const EVENTS = [
   },
   {
     tag: null,
-    date: 'September 10, 2026',
+    date: 'July 30, 2026',
+    time: '8:00 AM WAT',
     title: 'Build AI Summit',
-    venue: 'The Zone, Gbagada, Lagos',
+    venue: 'Lagos Oriental Hotel, Victoria Island, Lagos',
     text: "A builder-focused convening on artificial intelligence and the infrastructure behind Africa's next wave of products.",
     href: 'https://www.buildaisummit.com/',
     cta: 'Learn more',
@@ -377,6 +379,7 @@ export default function Home() {
               <div className={`ev-card rv${i === 1 ? ' d1' : ''}`} key={ev.title}>
                 {ev.tag && <span className="ev-tag">{ev.tag}</span>}
                 <div className="ev-date">{ev.date}</div>
+                {ev.time && <div className="ev-time">{ev.time}</div>}
                 <h3>{ev.title}</h3>
                 <div className="ev-venue">{ev.venue}</div>
                 <p>{ev.text}</p>
