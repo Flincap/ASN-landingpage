@@ -15,6 +15,11 @@ const galleryUrl = (kind: string, n: number) =>
 
 const VIDEO_ID = 'x8DxbBTnbgs'
 
+/* The 2027 flagship and the hub all previous-event links now point to. */
+const SUMMIT_URL = 'https://summit.afristablecoin.org/'
+/* Full photo gallery. Swap this for the dedicated gallery URL when ready. */
+const GALLERY_URL = 'https://drive.google.com/drive/folders/16mrdO5-lheId1-mZ_m3sY4QoVHuT8pXa'
+
 const SWAP_WORDS = ['Africa.', 'Nigeria.', 'Lagos.', 'everyone.']
 
 /** Rotating hero word: Africa → Nigeria → Lagos → everyone. */
@@ -57,30 +62,17 @@ const STATS = [
   { end: 3, prefix: '~', suffix: 'x', text: "Nigeria's lead over South Africa, the continent's second-largest market." },
 ]
 
-const EVENTS = [
-  {
-    tag: 'Flagship',
-    date: 'July 30, 2026',
-    time: '8:00 AM WAT',
-    title: 'Nigeria Stablecoin Summit 2.0',
-    venue: 'Lagos Oriental Hotel, Victoria Island, Lagos',
-    text: "The second edition of Nigeria's gathering on payments and banking innovation — policymakers, banks and fintech leaders in one room.",
-    href: 'https://www.nigeriastablecoinsummit.com/',
-    cta: 'Register',
-    btn: 'btn-primary',
-  },
-  {
-    tag: null,
-    date: 'July 30, 2026',
-    time: '8:00 AM WAT',
-    title: 'Build AI Summit',
-    venue: 'Lagos Oriental Hotel, Victoria Island, Lagos',
-    text: "A builder-focused convening on artificial intelligence and the infrastructure behind Africa's next wave of products.",
-    href: 'https://www.buildaisummit.com/',
-    cta: 'Learn more',
-    btn: 'btn-gold',
-  },
-]
+const FLAGSHIP = {
+  tag: 'Flagship · 2027',
+  date: 'June 9 & 10, 2027',
+  time: 'Invite-only mixer Wednesday evening · Main conference Thursday',
+  title: 'Africa Payments and Stablecoin Summit',
+  venue: 'Lagos Oriental Hotel, Victoria Island, Lagos',
+  text: 'The successor to the Nigeria Stablecoin Summit, taken continental. 750 senior banking, payments and finance leaders from across Africa, in one room, for two days in Lagos.',
+  facts: ['750 executives', 'Two days', 'Lagos'],
+  href: SUMMIT_URL,
+  cta: 'Visit the summit site',
+}
 
 const PATHS = [
   {
@@ -162,8 +154,8 @@ export default function Home() {
             world's second-largest market for grassroots crypto adoption.
           </p>
           <div className="hero-ctas">
-            <a href="https://www.nigeriastablecoinsummit.com/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-              Nigeria Stablecoin Summit 2.0 <Arrow />
+            <a href={SUMMIT_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              The 2027 Summit <Arrow />
             </a>
             <Link to="/#involve" className="btn btn-ghost">Get involved</Link>
           </div>
@@ -322,8 +314,9 @@ export default function Home() {
           <span className="eyebrow rv">Moments that matter</span>
           <h2 className="h-display rv d1">Highlights from our past events</h2>
           <p className="sub rv d2">
-            The Nigeria Stablecoin Summit, July 24, 2025, Lagos Oriental Hotel — and the West Africa
-            Stablecoin Summit, November 2025, Abuja.
+            Africa's first stablecoin conference, July 24, 2025, Lagos Oriental Hotel. The West
+            Africa Stablecoin Summit, November 2025, Abuja. And the Nigeria Stablecoin Summit 2.0,
+            July 30, 2026, back at the Lagos Oriental Hotel.
           </p>
         </div>
 
@@ -366,6 +359,11 @@ export default function Home() {
               </>
             )}
           </div>
+          <div className="moments-cta rv d3">
+            <a className="btn btn-gold" href={GALLERY_URL} target="_blank" rel="noopener noreferrer">
+              See the full gallery <Arrow />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -374,20 +372,30 @@ export default function Home() {
         <div className="wrap">
           <span className="eyebrow rv">Upcoming events</span>
           <h2 className="h-display rv d1">Where to find us next</h2>
-          <div className="event-list">
-            {EVENTS.map((ev, i) => (
-              <div className={`ev-card rv${i === 1 ? ' d1' : ''}`} key={ev.title}>
-                {ev.tag && <span className="ev-tag">{ev.tag}</span>}
-                <div className="ev-date">{ev.date}</div>
-                {ev.time && <div className="ev-time">{ev.time}</div>}
-                <h3>{ev.title}</h3>
-                <div className="ev-venue">{ev.venue}</div>
-                <p>{ev.text}</p>
-                <a className={`btn ${ev.btn}`} href={ev.href} target="_blank" rel="noopener noreferrer">
-                  {ev.cta} <Arrow />
+          <div className="ev-featured rv d1">
+            <span className="ev-tag">{FLAGSHIP.tag}</span>
+            <div className="ev-featured-grid">
+              <div className="ev-featured-main">
+                <div className="ev-date">{FLAGSHIP.date}</div>
+                <div className="ev-time">{FLAGSHIP.time}</div>
+                <h3>{FLAGSHIP.title}</h3>
+                <div className="ev-venue">{FLAGSHIP.venue}</div>
+                <p>{FLAGSHIP.text}</p>
+                <ul className="ev-facts">
+                  {FLAGSHIP.facts.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                <a className="btn btn-gold" href={FLAGSHIP.href} target="_blank" rel="noopener noreferrer">
+                  {FLAGSHIP.cta} <Arrow />
                 </a>
               </div>
-            ))}
+              <div className="ev-datecard" aria-hidden="true">
+                <span className="ev-dc-days">09<i>/</i>10</span>
+                <span className="ev-dc-month">June 2027</span>
+                <span className="ev-dc-place">Lagos, Nigeria</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
