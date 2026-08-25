@@ -31,8 +31,8 @@ export default function Header({ solid = false }: { solid?: boolean }) {
           <Link to="/#about" onClick={close}>About</Link>
           <Link to="/what-we-do" onClick={close}>What We Do</Link>
           <Link to="/#events" onClick={close}>Events</Link>
-          <a href="https://www.nigeriastablecoinsummit.com/" target="_blank" rel="noopener noreferrer">
-            2026 Summit
+          <a href="https://summit.afristablecoin.org/" target="_blank" rel="noopener noreferrer">
+            2027 Summit
           </a>
           <Link to="/#involve" className="nav-cta" onClick={close}>Get Involved</Link>
         </nav>
